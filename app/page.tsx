@@ -49,7 +49,7 @@ export default function Home() {
             <main className="text-center">
                 <h1 className="" aria-label="Next Pokedex">
                     <Image
-                        src="/next-pokedex.png"
+                        src="/Next-Pokedex.png"
                         alt="Logo Next Pokedex"
                         className="m-auto"
                         width={1000}
