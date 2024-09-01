@@ -6,7 +6,9 @@ import { useState, useEffect } from 'react';
 //* TYPES
 import { IPokemon } from './@types/pokemon';
 
+//* NEXT
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
     //* STATES
@@ -71,7 +73,9 @@ export default function Home() {
                 <div className="flex flex-wrap gap-8 justify-center mt-4 mb-6">
                     {/* carte */}
                     {filteredPokemons.map((pokemon) => (
-                        <div
+                        <Link
+                            // renvoie vers la fiche du pokemon
+                            href={`/pokemon/${pokemon.pokedex_id}`}
                             key={pokemon.pokedex_id}
                             className="border border-[#FFCC00] rounded-lg p-4 hover:bg-[#0E417C] hover:scale-105 hover:z-20 hover:shadow-[0px_0px_40px_0px_#FFCC00] transition transform duration-500 w-full md:w-auto"
                         >
@@ -110,7 +114,7 @@ export default function Home() {
                                     <div className="ml-4">{type.name}</div>
                                 </div>
                             ))}
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </main>

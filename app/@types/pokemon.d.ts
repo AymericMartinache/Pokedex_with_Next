@@ -32,10 +32,20 @@ export interface IPokemon {
         name: string;
         multiplier: number;
     }[];
-    evolution: string | null;
+    evolution: {
+        pre: string | null;
+        next:
+            | {
+                  pokedex_id: number;
+                  name: string;
+                  condition: string;
+              }[]
+            | null;
+        mega: string | null;
+    } | null;
     height: string;
     weight: string;
-    egg_groups: string | null;
+    egg_groups: string[] | null;
     sexe: {
         male: number;
         female: number;

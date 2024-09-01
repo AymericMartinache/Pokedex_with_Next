@@ -46,6 +46,10 @@ Ce projet utilise [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 -   **`tailwind.config.js`** : Configuration pour Tailwind CSS, incluant les couleurs personnalisées, les espacements et d'autres tokens de design.
 
+### Fichiers et répertoires clés
+
+API utilisée : [Tyradex](https://tyradex.vercel.app/)
+
 ## En savoir plus
 
 Pour en savoir plus sur Next.js, consultez les ressources suivantes :
