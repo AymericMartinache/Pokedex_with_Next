@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 //* TYPES
 import { IPokemon } from './@types/pokemon';
 
+import Image from 'next/image';
+
 export default function Home() {
     //* STATES
     const [searchInput, setSearchInput] = useState<string>('');
@@ -46,10 +48,12 @@ export default function Home() {
         <div className="flex flex-col justify-between h-screen p-3">
             <main className="text-center">
                 <h1 className="" aria-label="Next Pokedex">
-                    <img
+                    <Image
                         src="/next-pokedex.png"
                         alt="Logo Next Pokedex"
                         className="m-auto"
+                        width={1000}
+                        height={1}
                     />
                 </h1>
                 <h2 className="text-xl">Un Pokédex codé avec NextJS !</h2>
@@ -72,10 +76,12 @@ export default function Home() {
                             className="border border-[#FFCC00] rounded-lg p-4 hover:bg-[#0E417C] hover:scale-105 hover:z-20 hover:shadow-[0px_0px_40px_0px_#FFCC00] transition transform duration-500 w-full md:w-auto"
                         >
                             {/* image */}
-                            <img
+                            <Image
                                 src={pokemon.sprites.regular}
                                 alt={pokemon.name.fr}
                                 className="mb-4 w-[200px] md:w-[300px] m-auto"
+                                width={200}
+                                height={1}
                             />
 
                             {/* nom */}
@@ -94,8 +100,10 @@ export default function Home() {
                                     key={type.name}
                                     className="flex items-center m-4"
                                 >
-                                    <img
+                                    <Image
+                                        alt=""
                                         src={type.image}
+                                        height={1}
                                         width={50}
                                         className="rounded-full"
                                     />

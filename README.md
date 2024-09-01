@@ -1,8 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pokedex with Next !
 
 ## Getting Started
-
-First, run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +12,43 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Pour commencer, lancez le serveur de développement. Ensuite, ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir le résultat.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Vous pouvez commencer à modifier la page en éditant `app/page.tsx`. La page se met à jour automatiquement lorsque vous modifiez le fichier.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Ce projet utilise [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) pour optimiser et charger automatiquement Inter, une police Google personnalisée.
 
-## Learn More
+## Vue d'ensemble technique
 
-To learn more about Next.js, take a look at the following resources:
+### Structure du projet
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   **Framework Next.js** : Le projet est construit avec Next.js, un framework React qui permet le rendu côté serveur et la génération de sites statiques. Cela permet de créer des applications web très optimisées et SEO-friendly.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-   **TypeScript** : Le projet est entièrement typé avec TypeScript, offrant une sécurité de typage et une meilleure expérience de développement avec IntelliSense et la vérification des types.
 
-## Deploy on Vercel
+-   **Tailwind CSS** : Tailwind CSS est utilisé pour le style, permettant un développement avec une approche utility-first avec un minimum de CSS personnalisé. Tailwind est configuré dans `tailwind.config.js`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-   **ESLint & Prettier** : Le projet utilise ESLint et Prettier pour assurer la qualité et la cohérence du code.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   **Intégration d'API** : Le projet récupère des données à partir d'une API distante, spécifiquement depuis `https://tyradex.vercel.app/api/v1/pokemon`, pour obtenir les données des Pokémon. Ces données sont gérées et affichées dynamiquement sur le frontend.
+
+-   **Optimisation des images** : Le projet utilise le composant `next/image` de Next.js pour un chargement et une distribution optimisés des images. Cela nécessite une configuration dans `next.config.js` pour autoriser les domaines externes à partir desquels les images peuvent être chargées.
+
+### Fichiers et répertoires clés
+
+-   **`app/layout.tsx`** : Ce fichier définit la mise en page principale de l'application, incluant la structure globale et les métadonnées.
+
+-   **`app/page.tsx`** : Il s'agit du composant principal de la page où les données des Pokémon sont récupérées et affichées.
+
+-   **`@types/pokemon.ts`** : Ce fichier contient les interfaces TypeScript utilisées pour typer les données des Pokémon dans tout le projet.
+
+-   **`next.config.js`** : Configuration personnalisée pour l'application Next.js, y compris les domaines d'images et d'autres paramètres de build.
+
+-   **`tailwind.config.js`** : Configuration pour Tailwind CSS, incluant les couleurs personnalisées, les espacements et d'autres tokens de design.
+
+## En savoir plus
+
+Pour en savoir plus sur Next.js, consultez les ressources suivantes :
+
+-   [Documentation Next.js](https://nextjs.org/docs) - pour en savoir plus sur les fonctionnalités et l'API de Next.js.
+-   [Apprendre Next.js](https://nextjs.org/learn) - un tutoriel interactif pour découvrir Next.js.
