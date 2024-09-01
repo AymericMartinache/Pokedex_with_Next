@@ -10,16 +10,23 @@ import { IPokemon } from './@types/pokemon';
 import Image from 'next/image';
 import Link from 'next/link';
 
+//* LOADER
+import { PacmanLoader } from 'react-spinners';
+
 export default function Home() {
     //* STATES
     const [searchInput, setSearchInput] = useState<string>('');
     const [filteredPokemons, setFilteredPokemons] = useState<IPokemon[]>([]);
     const [pokemons, setPokemons] = useState<IPokemon[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     //* USE EFFECT
     // récupère les données depuis l'API au chargement du composant
     useEffect(() => {
         const getPokemons = async () => {
+            // on ajoute le loader
+            setIsLoading(true);
+
             try {
                 const resultJson = await fetch(
                     'https://tyradex.vercel.app/api/v1/pokemon'
@@ -29,11 +36,19 @@ export default function Home() {
                 // on ne récupère pas le premier pokemon (pokemon Bug) (car il n'a pas de type et cela provoque une erreur)
                 result.shift();
 
-                setPokemons(result);
-                setFilteredPokemons(result);
+                // trie les Pokémon par ordre alphabétique
+                const sortedPokemons = result.sort((a, b) =>
+                    a.name.fr.localeCompare(b.name.fr)
+                );
+
+                setPokemons(sortedPokemons);
+
+                setFilteredPokemons(sortedPokemons);
             } catch (error) {
                 console.error('Erreur de récupération des données:', error);
             }
+            // on enlève le loader
+            setIsLoading(false);
         };
         getPokemons();
     }, []);
@@ -54,8 +69,8 @@ export default function Home() {
                         src="/Next-Pokedex.png"
                         alt="Logo Next Pokedex"
                         className="m-auto"
-                        width={1000}
-                        height={1}
+                        width={1200}
+                        height={1000}
                     />
                 </h1>
                 <h2 className="text-xl">Un Pokédex codé avec NextJS !</h2>
@@ -68,6 +83,13 @@ export default function Home() {
                     onChange={(e) => setSearchInput(e.target.value)}
                     className="mt-10 mb-10 p-4 border-2 border-[#FFCC00] text-gray-700 w-80 rounded-full"
                 />
+                {isLoading ? (
+                    <div className="flex justify-center items-center m-10">
+                        <PacmanLoader size={50} color={'#FFCC00'} />
+                    </div>
+                ) : (
+                    ''
+                )}
 
                 {/* cartes container */}
                 <div className="flex flex-wrap gap-8 justify-center mt-4 mb-6">
@@ -118,7 +140,7 @@ export default function Home() {
                     ))}
                 </div>
             </main>
-            <footer className="text-center mt-4">&copy;M-RikCorp - 2024</footer>
+            <footer className="text-center p-4">&copy;M-RikCorp - 2024</footer>
         </div>
     );
 }

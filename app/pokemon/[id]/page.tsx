@@ -1,6 +1,14 @@
+'use client';
+
+//* TYPES
 import { IPokemon } from '@/app/@types/pokemon';
+
+//* NEXT
 import Image from 'next/image';
 import Link from 'next/link';
+
+//* REACT
+import { useEffect, useState } from 'react';
 
 //* fetch de récupération du pokemon
 const getPokemonDetails = async (id: number): Promise<IPokemon> => {
@@ -19,10 +27,33 @@ const getPokemonDetails = async (id: number): Promise<IPokemon> => {
     }
 };
 
-export default async function Details({ params }: any) {
-    console.log(params.id);
+export default function Details({ params }: any) {
+    //* STATES
+    // Pokemon à afficher
+    const [pokemonToDisplay, setPokemonToDisplay] = useState<IPokemon | null>(
+        null
+    );
 
-    const pokemonToDisplay = await getPokemonDetails(params.id);
+    useEffect(() => {
+        // défilement en haut de la page à chaque chargement du composant
+        window.scrollTo(0, 0);
+
+        //* FECTCH
+        const fetchPokemonDetails = async () => {
+            try {
+                const data = await getPokemonDetails(params.id);
+                setPokemonToDisplay(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchPokemonDetails();
+    }, [params.id]);
+
+    if (!pokemonToDisplay) {
+        return <div>Erreur ! Pokémon introuvable !</div>;
+    }
 
     return (
         <>
@@ -164,6 +195,7 @@ export default async function Details({ params }: any) {
                     </div>
                 </div>
             </div>
+            <footer className="text-center p-4">&copy;M-RikCorp - 2024</footer>
         </>
     );
 }
