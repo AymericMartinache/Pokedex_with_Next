@@ -26,8 +26,10 @@ export default async function Details({ params }: any) {
 
     return (
         <>
-            <Link href={'/'}>⬅ Retour</Link>
             <div className="max-w-4xl mx-auto p-4">
+                <Link href={'/'} className="p-4 text-[#FFCC00] text-lg">
+                    ⬅ Retour
+                </Link>
                 <div className="shadow-md rounded-lg overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center">
                         {/* Image du Pokémon */}
@@ -43,13 +45,13 @@ export default async function Details({ params }: any) {
 
                         {/* Informations principales */}
                         <div className="md:w-2/3 p-4">
-                            <h1 className="text-4xl font-bold text-cyan-600">
+                            <h1 className="text-5xl font-bold text-[#3561B2] mb-2">
                                 {pokemonToDisplay.name.fr}{' '}
                                 <span className="text-xl text-gray-500">
                                     ({pokemonToDisplay.name.en})
                                 </span>
                             </h1>
-                            <p className="text-lg  mb-2">
+                            <p className="text-xl italic text-[#FFCC00] mb-4">
                                 {pokemonToDisplay.category}
                             </p>
                             <p className="text-md  mb-2">
@@ -68,7 +70,7 @@ export default async function Details({ params }: any) {
                     </div>
 
                     {/* Types */}
-                    <div className="p-4 border-t border-gray-200 mt-8">
+                    <div className="p-4 border-t border-[#FFCC00] mt-8">
                         <h2 className="text-2xl font-bold ">Types</h2>
                         <div className="flex space-x-4 mt-2">
                             {pokemonToDisplay.types.map((type) => (
@@ -92,7 +94,7 @@ export default async function Details({ params }: any) {
                     </div>
 
                     {/* Talents */}
-                    <div className="p-4 border-t border-gray-200 mt-8">
+                    <div className="p-4 border-t border-[#FFCC00] mt-8">
                         <h2 className="text-2xl font-bold ">Talents</h2>
                         <ul className="list-inside mt-2 list-none">
                             {pokemonToDisplay.talents.map((talent) => (
@@ -105,7 +107,7 @@ export default async function Details({ params }: any) {
                     </div>
 
                     {/* Statistiques */}
-                    <div className="p-4 border-t border-gray-200 mt-8">
+                    <div className="p-4 border-t border-[#FFCC00] mt-8">
                         <h2 className="text-2xl font-bold ">Statistiques</h2>
                         <div className="grid grid-cols-2 gap-4 mt-2">
                             <div className="text-md">
@@ -130,7 +132,7 @@ export default async function Details({ params }: any) {
                     </div>
 
                     {/* Résistances */}
-                    <div className="p-4 border-t border-gray-200 mt-8">
+                    <div className="p-4 border-t border-[#FFCC00] mt-8">
                         <h2 className="text-2xl font-bold ">Résistances</h2>
                         <div className="grid grid-cols-2 gap-4 mt-2">
                             {pokemonToDisplay.resistances.map((resistance) => (
@@ -142,7 +144,7 @@ export default async function Details({ params }: any) {
                     </div>
 
                     {/* Évolutions */}
-                    <div className="p-4 border-t border-gray-200 mt-8">
+                    <div className="p-4 border-t border-[#FFCC00] mt-8">
                         <h2 className="text-2xl font-bold ">Évolutions</h2>
                         {pokemonToDisplay.evolution &&
                             pokemonToDisplay.evolution.next && (

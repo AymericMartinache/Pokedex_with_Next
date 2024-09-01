@@ -89,12 +89,12 @@ export default function Home() {
                             />
 
                             {/* nom */}
-                            <div className="text-4xl font-bold text-cyan-600">
+                            <div className="text-4xl font-bold text-[#3561B2]">
                                 {pokemon.name.fr}
                             </div>
 
                             {/* categories */}
-                            <div className="text-xl italic">
+                            <div className="text-xl italic text-[#FFCC00]">
                                 {pokemon.category}
                             </div>
 
